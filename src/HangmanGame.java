@@ -10,6 +10,10 @@ import javax.swing.JFrame;
 public class HangmanGame extends JFrame {
 
 	// fields for Person, AlphabetPanel, etc
+	//private Person p;
+	//private AlphabetPanel ap;
+	//private RandomString rs;
+	//private GuessPhrasePanel gp;
 	private Text t; // this one should be removed after
 					// creating the other panels
 	
@@ -22,6 +26,10 @@ public class HangmanGame extends JFrame {
 		// set its size, like I've done with this
 		// Text panel (which you should delete after
 		// you create your own panels)
+		//Person p = new Person();
+		//AlphabetPanel ap = new AlpphabetPanel();
+		//RandomString rs = new RandomString();
+		//GuessPhrasePanel gp = new GuessPhrasePanel;();
 		Text t = new Text("Hello, world!");
 		t.hideUnderline();
 		t.setPreferredSize(new Dimension(650, 50));
@@ -31,9 +39,17 @@ public class HangmanGame extends JFrame {
 
 		// the last step is to add each panel
 		// to the content pane so it can be displayed
+		//super.getContentPane().add(p);
+		//super.getContentPane().add(ap);
+		//super.getContentPane().add(rs);
+		//super.getContentPane().add(gp);
 		super.getContentPane().add(t);
 		super.pack();
 		super.setVisible(true);
+	}
+	
+	public void playAgain() {
+		
 	}
 
 	public static void main(String[] args) {
