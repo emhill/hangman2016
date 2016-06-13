@@ -9,10 +9,10 @@ import javax.swing.JFrame;
 
 public class HangmanGame extends JFrame {
 
-	// fields for Person, AlphabetPanel, etc
-	//private Person p;
-	//private AlphabetPanel ap;
-	//private RandomString rs;
+	//fields for Person, AlphabetPanel, etc
+	private Person p;
+	private AlphabetPanel ap;
+	private RandomString rs;
 	private GuessPhrasePanel gp;
 	private Text t; // this one should be removed after
 					// creating the other panels
@@ -26,10 +26,11 @@ public class HangmanGame extends JFrame {
 		// set its size, like I've done with this
 		// Text panel (which you should delete after
 		// you create your own panels)
-		//Person p = new Person();
-		//AlphabetPanel ap = new AlpphabetPanel();
-		//RandomString rs = new RandomString();
-		//GuessPhrasePanel gp = new GuessPhrasePanel;();
+		Person p = new Person();
+		AlphabetPanel ap = new AlphabetPanel();
+		RandomString rs = new RandomString("");
+		GuessPhrasePanel gp = new GuessPhrasePanel("reveals FullPhrase!");
+		gp.setPreferredSize(new Dimension (640, 420));
 		Text t = new Text("Hello, world!");
 		t.hideUnderline();
 		t.setPreferredSize(new Dimension(650, 50));
@@ -48,11 +49,23 @@ public class HangmanGame extends JFrame {
 		super.setVisible(true);
 	}
 	
+//	public void GuessPhrasePanel(char Letter){
+//		gp.result = AlphabetPanel.getResult(Letter);
+//	}
+//	
 	public void playAgain() {
 		
 		
 	}
-
+	
+	public void reset(){
+		
+	}
+	
+	public void procesLeter(){
+		
+	}
+	
 	public static void main(String[] args) {
 		new HangmanGame();
 	}
