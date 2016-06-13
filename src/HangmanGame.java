@@ -21,7 +21,7 @@ public class HangmanGame extends JFrame {
 	private Text t; // this one should be removed after
 					// creating the other panels
 	
-	public HangmanGame()  {
+	public HangmanGame() {
 		super("Hangman Game");
 		super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -53,7 +53,7 @@ public class HangmanGame extends JFrame {
 
 		// the last step is to add each panel
 		// to the content pane so it can be displayed
-		//super.getContentPane().add(p);
+		super.getContentPane().add(p);
 		//super.getContentPane().add(ap);
 		//super.getContentPane().add(rs);
 		super.getContentPane().add(gp);
@@ -64,11 +64,17 @@ public class HangmanGame extends JFrame {
 	
 
 	public void processLetter(char c) {
-
-		
+		if (gp.hasLetter(c) == true) {
+			gp.revealLetter(c);
+			//ap.setLetterColor(Color.GREEN);
+		}
+		else {
+			p.showNext();
+			//ap.setLetterColor(Color.RED);
+		}
 	}
 	
-	public void reset(){
+	public void reset() {
 		
 	}
 
