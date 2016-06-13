@@ -13,7 +13,7 @@ public class HangmanGame extends JFrame {
 	//private Person p;
 	//private AlphabetPanel ap;
 	//private RandomString rs;
-	//private GuessPhrasePanel gp;
+	private GuessPhrasePanel gp;
 	private Text t; // this one should be removed after
 					// creating the other panels
 	
@@ -49,6 +49,7 @@ public class HangmanGame extends JFrame {
 	}
 	
 	public void playAgain() {
+		
 		
 	}
 
