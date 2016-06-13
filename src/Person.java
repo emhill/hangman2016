@@ -10,10 +10,8 @@ public class Person extends JPanel {
 	
 	private int numleft=6;
 	
-	
 	public void paintComponent(Graphics page) {
-		getNumLeft();
-		getNumLeft();
+		
 		int x = 400;
 		int y = 150;
 		
@@ -56,11 +54,11 @@ public class Person extends JPanel {
 	}
 	
 	public void reset(){
-		
+		numleft = 6;
 	}
 	
-	public void shoeNext(){
-		
+	public void showNext(){
+		numleft -= 1;
 	}
 	
 	public static void main(String[] args) {
