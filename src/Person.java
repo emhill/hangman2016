@@ -2,6 +2,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -9,6 +11,14 @@ import javax.swing.JPanel;
 public class Person extends JPanel {
 	
 	private int numleft=6;
+	
+	public Person(){
+		this.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+	           showNext();
+	 }
+	        });
+	}
 	
 	public void paintComponent(Graphics page) {
 		
