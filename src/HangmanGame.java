@@ -82,7 +82,7 @@ public class HangmanGame extends JFrame {
 
 	public void reset() {
 		p.reset();
-		gp.setPhase(rs.next());
+		gp.setPhrase(rs.next());
 		ap.reset();
 	}
 
