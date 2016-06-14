@@ -18,7 +18,7 @@ public class AlphabetPanel {
 	}
 					
 	public void setLetterColor(){
-	
+		}
 	}
 
 		
@@ -40,7 +40,7 @@ public class AlphabetPanel {
 
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		//
 
 	}
 
