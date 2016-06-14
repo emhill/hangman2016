@@ -50,6 +50,7 @@ public class HangmanGame extends JFrame {
 	}
 
 	public void processLetter(char c) {
+		c = Character.toUpperCase(c);
 		if (c >= 'A' && c <= 'Z') {
 			if (gp.hasLetter(c) == true) {
 				gp.revealLetter(c);
@@ -67,7 +68,7 @@ public class HangmanGame extends JFrame {
 				}
 			}// else {
 				//wantToRestart();
-			}
+		}
 //		} else if (KeyEvent.VK_ENTER == c) {
 //			gp.revealFullPhrase();
 //		} else if (KeyEvent.VK_SPACE == c) {
@@ -81,7 +82,7 @@ public class HangmanGame extends JFrame {
 
 	public void reset() {
 		p.reset();
-		// gp.setGuessPhrase(rs.next());
+		gp.setPhase(rs.next());
 		ap.reset();
 	}
 
