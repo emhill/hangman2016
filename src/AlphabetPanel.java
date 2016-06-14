@@ -7,8 +7,7 @@ import java.util.*;
 
 public class AlphabetPanel extends JPanel {
 	
-	
-	
+
 	public boolean beenSeen;
 	public boolean vowel;
 	public Color LetterColor;
@@ -26,6 +25,20 @@ public class AlphabetPanel extends JPanel {
 	
 	
 	public Color color;
+	
+	
+	
+//	int n = 1;
+//	
+//	char[] Char_Array = new char[n]; 
+	
+	
+	
+	
+	
+	
+	
+	
 		
 	public AlphabetPanel(){
 		
@@ -34,6 +47,7 @@ public class AlphabetPanel extends JPanel {
 		for( c = 'A'; c <= 'Z'; c++){
 			letter = Character.toString(c);
 			Text c = new Text(letter);
+			c.setLetterColor(Color.black);
 			c.showText();	
 			c.hideUnderline();
 			this.add(c);
@@ -41,6 +55,10 @@ public class AlphabetPanel extends JPanel {
 		
 	}
 
+	// make second array
+	//2 arrays
+	
+	
 		
 		public void reset(){
 			Component c = this.getComponent(3);
@@ -64,20 +82,34 @@ public class AlphabetPanel extends JPanel {
 //		}
 
 		
+		int n = 1;
+	
+		char[] Char_Array = new char[n]; 
 		
-		public void setLetterColor(char c, Color color){// char c, Color color
-			int i;
-			//color = Color.RED;
+		
+		
+		
+		
+			//Color color = Color.blue;
+		
+		
+		
+		public AlphabetPanel(Color color){
+			this.color = color;
 		}
-//			for(i=0; 1 < vowels.length; i++){
-//					if(Letters.contains(String.valueOf(vowels[i]))) {
-//						color = Color.GREEN;
-//					}
-//			}
-//			num = (Letters.charAt(0) - 'A');
-//			x = num;
-//			repaint();
-//		}
+		
+		
+		public void setLetterColor(char c, Color color){
+			
+			
+			
+			for (int i = 0; i < Char_Array.length; i++){
+				
+				Char_Array [i] = c;
+				
+			}
+			System.out.print(c);
+		}
 
 		
 		
@@ -140,7 +172,11 @@ public class AlphabetPanel extends JPanel {
 			}
 		
 		
-		//AP.setLetterColor('A',Color.blue);
+		
+		
+		//.setLetterColor('A',Color.blue);
+		
+		AP.setLetterColor('A',Color.blue);
 
 		
 		
