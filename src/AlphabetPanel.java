@@ -12,9 +12,13 @@ public class AlphabetPanel extends JPanel {
 	public boolean vowel;
 	public Color LetterColor;
 	
-	public static char [] alpha  = {'A','B','C','D','E','F','G','H',
-	'I','J','K','L','M','N','O','P','Q','R','S',
-	'T','U','V','W','X','Y','Z'};
+	//public static char [] alpha  = {'A','B','C','D','E','F','G','H',
+	//'I','J','K','L','M','N','O','P','Q','R','S',
+	//'T','U','V','W','X','Y','Z'};
+	
+	private ArrayList<Text> list;
+	
+	
 	
 	
 	public static char [] vowels  = {'A','E','I','O','U'};
@@ -32,24 +36,25 @@ public class AlphabetPanel extends JPanel {
 //	
 //	char[] Char_Array = new char[n]; 
 	
-	
-	
-	
-	
-	
-	
+
 	
 		
 	public AlphabetPanel(){
-		
-
-		
+		list = new ArrayList<Text>();
 		for( c = 'A'; c <= 'Z'; c++){
+			
+			
+
 			letter = Character.toString(c);
 			Text c = new Text(letter);
 			c.setLetterColor(Color.black);
 			c.showText();	
 			c.hideUnderline();
+			
+			list.add(c);
+			
+			
+			
 			this.add(c);
 		}
 		
@@ -88,43 +93,22 @@ public class AlphabetPanel extends JPanel {
 		
 		
 		
+		//Color color = Color.blue;
 		
 		
-			//Color color = Color.blue;
-		
-		
-		
-		public AlphabetPanel(Color color){
-			this.color = color;
-		}
-		
+
 		
 		public void setLetterColor(char c, Color color){
+			//a = 65
+	
+			list.get(c - 65).setLetterColor(color);
 			
 			
-			
-			for (int i = 0; i < Char_Array.length; i++){
-				
-				Char_Array [i] = c;
-				
-			}
-			System.out.print(c);
+			//System.out.println((int)c);
 		}
 
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
 		
 		public Color getLetterColor(){// char c: return Color
 			
@@ -163,14 +147,14 @@ public class AlphabetPanel extends JPanel {
 		frame.pack();
 		frame.setVisible(true);
 		
-		int i = 0;
+		//int i = 0;
 
 		
-		for(i=0; i < vowels.length; i++){
+		//for(i=0; i < vowels.length; i++){
 			
-			AP.setLetterColor(vowels[i], Color.blue);
+			//AP.setLetterColor(vowels[i], Color.blue);
 			
-			}
+			//}
 		
 		
 		
@@ -178,9 +162,7 @@ public class AlphabetPanel extends JPanel {
 		//.setLetterColor('A',Color.blue);
 		
 		AP.setLetterColor('A',Color.blue);
-
-		
-		
+		AP.setLetterColor('D',Color.red);
 		
 	}
 	}
