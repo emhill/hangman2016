@@ -125,6 +125,7 @@ public class AlphabetPanel extends JPanel {
 		
 		
 		
+		
 		public Color getLetterColor(){// char c: return Color
 			
 			return LetterColor;
