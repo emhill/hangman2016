@@ -42,7 +42,7 @@ public class HangmanGame extends JFrame {
 
 		super.getContentPane().add(p);
 		// super.getContentPane().add(ap);
-		// super.getContentPane().add(rs);
+		//super.getContentPane().add(rs);
 		super.getContentPane().add(gp);
 		super.getContentPane().add(t);
 		super.pack();
