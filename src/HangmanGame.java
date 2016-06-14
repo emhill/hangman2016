@@ -15,11 +15,8 @@ public class HangmanGame extends JFrame {
 	//fields for Person, AlphabetPanel, etc
 	private Person p;
 	private AlphabetPanel ap;
-
 	private RandomString rs;
 	private GuessPhrasePanel gp;
-	private Text t; // this one should be removed after
-					// creating the other panels
 	
 	public HangmanGame() {
 		super("Hangman Game");
@@ -30,13 +27,6 @@ public class HangmanGame extends JFrame {
 			public void keyTyped(KeyEvent e) {
 				System.out.println("Key Listener");
 			}});
-
-		
-		// setup the panels
-		// You should initialize each one & 
-		// set its size, like I've done with this
-		// Text panel (which you should delete after
-		// you create your own panels)
 
 		Person p = new Person();
 		AlphabetPanel ap = new AlphabetPanel();
@@ -75,12 +65,20 @@ public class HangmanGame extends JFrame {
 	}
 	
 	public void reset() {
-		
+		p.reset();
+		//gp.setGuessPhrase(rs.next());
+		ap.reset();
 	}
 
 	
 	public static void main(String[] args) {
 		new HangmanGame();
+		HangmanGame frame = new HangmanGame();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		System.out.println("Click Yes to Restart");
+		
+		frame.pack();
+		frame.setVisible(true);
 	}
-
+	
 }
