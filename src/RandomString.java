@@ -32,7 +32,8 @@ public class RandomString {
 	public String next(){
 		if(lines.isEmpty()){
 			lines = used;
-		}
+			used = new ArrayList<String>();
+			}
 		Random generator = new Random();
 		int num1;
 		num1 = generator.nextInt(lines.size());
@@ -40,12 +41,14 @@ public class RandomString {
 		String a = lines.get(num1);
 		lines.remove(num1);
 		return a;
-
 	}
 
 
 	public static void main(String[] args) {
 		RandomString a = new RandomString("guess_phrases.txt");
+		System.out.println(a.next());
+		System.out.println(a.next());
+		System.out.println(a.next());
 		System.out.println(a.next());
 		System.out.println(a.next());
 		System.out.println(a.next());

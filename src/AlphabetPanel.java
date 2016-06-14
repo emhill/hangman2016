@@ -37,13 +37,8 @@ public class AlphabetPanel extends JPanel {
 			this.add(c);
 		}
 		
-		
-		
 	}
-		
-		
 
-		
 		
 		public void reset(){
 			Component c = this.getComponent(3);
@@ -100,9 +95,10 @@ public class AlphabetPanel extends JPanel {
 		//JPanel AlphabetPanel = new JPanel();				
 		AP.setPreferredSize (new Dimension (700,50)) ;
 		
-		frame.getContentPane().add(AlphabetPanel);
+		frame.getContentPane().add(AP);
 		frame.pack();
 		frame.setVisible(true);
 		
+
 	}
 }
