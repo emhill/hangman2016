@@ -47,31 +47,34 @@ gets rid of old phrase parts and creates new ones
 	public boolean hasLetter (char c){
 		for (Text t: list)
 			if (t.getText().equalsIgnoreCase(Character.toString(c)))
-					return true;
+				return true;
 
-			return false;
-
-	}
-	//reveals or shows a specified letter
-	public void revealLetter(char c){
-//		for (int n=0; )
-//			this.getComponent(n){
-//
-//			if (ch == c){
-//				t.showText();
-//				t.hideUnderline();	
-//			}
-		
-	}
-
-
-//	returns whether or not the full phrase has been revealed
-	public boolean isFullPhraseRevealed(){
 		return false;
 	}
+
+	//reveals or shows a specified letter
+	public void revealLetter(char c){
+		for (Text t: list)
+			if (t.getText().equalsIgnoreCase(Character.toString(c))){
+				t.showText();
+				t.hideUnderline();
+			}
+
+	}
+
+	//	returns whether or not the full phrase has been revealed
+	public boolean isFullPhraseRevealed(){
+		for (Text t: list)
+			if (!t.isTextVisible())
+				return false;
+		return true;
+	}
 	//reveals the full phrase
-	public String revealFullPhrase(){
-		return guessPhrase;
+	public void revealFullPhrase(){
+		for (Text t: list){
+			t.showText();
+			t.hideUnderline();
+		}
 	}
 
 
@@ -81,6 +84,9 @@ gets rid of old phrase parts and creates new ones
 		//		phrase.revealLetter('a');
 		System.out.println(phrase.hasLetter('A'));
 		System.out.println(phrase.hasLetter('z'));
+		phrase.revealLetter('A');
+		System.out.println(phrase.isFullPhraseRevealed());
+		phrase.revealFullPhrase();
 		JPanel panel = phrase;
 
 		frame.getContentPane().add(panel);
