@@ -24,6 +24,8 @@ public class AlphabetPanel extends JPanel {
 	public int x;
 	public char c;
 	
+	
+	public Color color;
 		
 	public AlphabetPanel(){
 		
@@ -48,22 +50,50 @@ public class AlphabetPanel extends JPanel {
 		
 		
 				
-		public void setLetterColor(String Letters){
-			int i;
-			LetterColor = Color.RED;
-			for(i=0; 1 < vowels.length; i++){
-					if(Letters.contains(String.valueOf(vowels[i]))) {
-						LetterColor = Color.GREEN;
-					}
-			}
-			num = (Letters.charAt(0) - 'A');
-			x = num;
-			repaint();
-		}
+//		public void setLetterColor(String Letter){// char c, Color color
+//			int i;
+//			LetterColor = Color.RED;
+//			for(i=0; 1 < vowels.length; i++){
+//					if(Letters.contains(String.valueOf(vowels[i]))) {
+//						LetterColor = Color.GREEN;
+//					}
+//			}
+//			num = (Letters.charAt(0) - 'A');
+//			x = num;
+//			repaint();
+//		}
 
 		
 		
-		public Color getLetterColor(){
+		public void setLetterColor(char c, Color color){// char c, Color color
+			int i;
+			//color = Color.RED;
+		}
+//			for(i=0; 1 < vowels.length; i++){
+//					if(Letters.contains(String.valueOf(vowels[i]))) {
+//						color = Color.GREEN;
+//					}
+//			}
+//			num = (Letters.charAt(0) - 'A');
+//			x = num;
+//			repaint();
+//		}
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		public Color getLetterColor(){// char c: return Color
 			
 			return LetterColor;
 		}
@@ -78,6 +108,7 @@ public class AlphabetPanel extends JPanel {
 			return vowel;
 			
 		}
+
 
 
 	
@@ -99,6 +130,20 @@ public class AlphabetPanel extends JPanel {
 		frame.pack();
 		frame.setVisible(true);
 		
+		int i = 0;
 
+		
+		for(i=0; i < vowels.length; i++){
+			
+			AP.setLetterColor(vowels[i], Color.blue);
+			
+			}
+		
+		
+		//AP.setLetterColor('A',Color.blue);
+
+		
+		
+		
 	}
-}
+	}
