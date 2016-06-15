@@ -22,8 +22,8 @@ public class Person extends JPanel {
 
 	public void paintComponent(Graphics page) {
 
-		int x = 400;
-		int y = 150;
+		int x = 1190;
+		int y = 0;
 
 		super.paintComponent(page);
 
