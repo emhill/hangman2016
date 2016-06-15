@@ -93,17 +93,18 @@ public class HangmanGame extends JFrame {
 	}
 	
 	
-	public void wantToRestart(){
-		int response = JOptionPane.showConfirmDialog(null, "Do you want to restart the game?", "Confirm",
-				JOptionPane.YES_NO_OPTION,
-				JOptionPane.QUESTION_MESSAGE);
-		if(response == JOptionPane.NO_OPTION){
-		System.out.println("No button clicked");
-		System.exit(0);
-		}else if(response == JOptionPane.YES_OPTION){
-		System.out.println("Yes button clicked");
-		this.reset();
-		}else if(response == JOptionPane.CLOSED_OPTION){
+	public void wantToRestart() {
+		int response = JOptionPane.showConfirmDialog(null,
+				"Do you want to restart the game?", "Confirm",
+				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+		if (response == JOptionPane.NO_OPTION) {
+			System.out.println("No button clicked");
+			System.exit(0);
+		} else if (response == JOptionPane.YES_OPTION) {
+			System.out.println("Yes button clicked");
+			p.reset();
+			ap.reset();
+		} else if (response == JOptionPane.CLOSED_OPTION) {
 			System.out.println("JOption closed");
 		}
 	}
@@ -114,19 +115,6 @@ public class HangmanGame extends JFrame {
 	 **/
 	public static void main(String[] args) {
 		new HangmanGame();
-		JFrame frame = new JFrame("Hangman");// The frame, with "Hangman" in the
-												// title bar.
-		HangmanGame frame1 = new HangmanGame();// the main frame for the window.
-		frame.getContentPane();
-		frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // End of the
-																// program if
-																// the user
-																// closes the
-																// frame.
-		// System.out.println("Click Yes to Restart");
-
-		frame1.pack(); // Sets the size of the frame based on the preferred sizes of what it contains.
-		frame1.setVisible(true); // Make the frame visible on the screen.
 	}
 
 }
