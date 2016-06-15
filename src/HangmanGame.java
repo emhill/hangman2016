@@ -17,6 +17,9 @@ public class HangmanGame extends JFrame {
 	private AlphabetPanel ap;
 	private RandomString rs;
 	private GuessPhrasePanel gp;
+	private Text t;
+	private Text win;
+	private Text lose;
 
 	public HangmanGame() {
 		super("Hangman Game");
@@ -31,16 +34,16 @@ public class HangmanGame extends JFrame {
 		gp = new GuessPhrasePanel(rs.next());
 		gp.setPreferredSize(new Dimension(640, 100));
 		
-		Text t = new Text("Reveal Full Phrase: Enter / New Game: SpaceBar");
+		t = new Text("Reveal Full Phrase: Enter / New Game: SpaceBar");
 		t.hideUnderline();
 		t.setPreferredSize(new Dimension(650, 50));
 		
-		Text win = new Text("Full Phrase Revealed!");
+		win = new Text("You win!");
 		win.hideUnderline();
 		win.setPreferredSize(new Dimension(650, 50));
 		win.hideText();
 		
-		Text lose = new Text("You lose!");
+		lose = new Text("You lose!");
 		lose.hideUnderline();
 		lose.setPreferredSize(new Dimension(650, 50));
 		lose.hideText();
@@ -68,14 +71,16 @@ public class HangmanGame extends JFrame {
 						ap.setLetterColor(c, Color.GREEN);
 						if (gp.isFullPhraseRevealed() == true) {
 							win.showText();
+							playAgain();
 						} else if (p.getNumLeft() <= 0) {
-							lose.showText();
+							
 						}
 					} else if (p.getNumLeft() > 0) {
 						if (!ap.hasLetterBeenSeen(c)) {
 						p.showNext();
 						ap.setLetterColor(c, Color.RED);
 							if (p.getNumLeft() == 0) {
+								lose.showText();
 								playAgain();
 							}
 						}
@@ -95,6 +100,8 @@ public class HangmanGame extends JFrame {
 		p.reset();
 		gp.setPhrase(rs.next());
 		ap.reset();
+		win.hideText();
+		lose.hideText();
 	}
 	
 	
