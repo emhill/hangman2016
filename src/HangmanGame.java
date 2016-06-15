@@ -22,18 +22,11 @@ public class HangmanGame extends JFrame {
 		super("Hangman Game");
 		super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		this.setFocusable(true); // enables frame to listen to key events
-		this.addKeyListener(new KeyAdapter() {
-			public void keyTyped(KeyEvent e) {
-				System.out.println("Key Listener");
-			}
-		});
-
 		Person p = new Person();
 		AlphabetPanel ap = new AlphabetPanel();
 		RandomString rs = new RandomString("");
 		GuessPhrasePanel gp = new GuessPhrasePanel("reveals FullPhrase!");
-		gp.setPreferredSize(new Dimension(640, 420));
+		gp.setPreferredSize(new Dimension(640, 500));
 
 		Text t = new Text("Hello, world!");
 		t.hideUnderline();
@@ -42,34 +35,60 @@ public class HangmanGame extends JFrame {
 		super.getContentPane().setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
 
 		super.getContentPane().add(p);
-		// super.getContentPane().add(ap);
+		super.getContentPane().add(ap);
 		// super.getContentPane().add(rs);
 		super.getContentPane().add(gp);
 		super.getContentPane().add(t);
 		super.pack();
 		super.setVisible(true);
+		
+		this.setFocusable(true); // enables frame to listen to key events
+		this.addKeyListener(new KeyAdapter() {
+			public void keyTyped(KeyEvent e) {
+					char c = e.getKeyChar();
+					c = Character.toUpperCase(c);
+					if (c >= 'A' && c <= 'Z') {
+						if (gp.hasLetter(c) == true) {
+							gp.revealLetter(c);
+							// ap.setLetterColor(Color.GREEN);
+							if (gp.isFullPhraseRevealed()) {
+								wantToRestart();
+							}
+						} else if (p.getNumLeft() > 0) {
+							// if (!ap.hadLetterBeenSeen(c)) {
+							p.showNext();
+							// ap.setLetterColor(Color.RED);
+							if (p.getNumLeft() == 0) {
+								wantToRestart();
+							}
+						}
+					} // else {
+						// wantToRestart();
+				System.out.println("Key Listener");
+			}
+		});
 	}
 
-	public void processLetter(char c) {
-		c = Character.toUpperCase(c);
-		if (c >= 'A' && c <= 'Z') {
-			if (gp.hasLetter(c) == true) {
-				gp.revealLetter(c);
-				// ap.setLetterColor(Color.GREEN);
-				if (gp.isFullPhraseRevealed()) {
-					wantToRestart();
-				}
-			} else if (p.getNumLeft() > 0) {
-				// if (!ap.hadLetterBeenSeen(c)) {
-				p.showNext();
-				// ap.setLetterColor(Color.RED);
-				if (p.getNumLeft() == 0) {
-					wantToRestart();
-				}
-			}
-		} // else {
-			// wantToRestart();
-	}
+//	public void processLetter(char c) {
+//		c = Character.toUpperCase(c);
+//		if (c >= 'A' && c <= 'Z') {
+//			if (gp.hasLetter(c) == true) {
+//				gp.revealLetter(c);
+//				// ap.setLetterColor(Color.GREEN);
+//				if (gp.isFullPhraseRevealed()) {
+//					wantToRestart();
+//				}
+//			} else if (p.getNumLeft() > 0) {
+//				// if (!ap.hadLetterBeenSeen(c)) {
+//				p.showNext();
+//				// ap.setLetterColor(Color.RED);
+//				if (p.getNumLeft() == 0) {
+//					wantToRestart();
+//				}
+//			}
+//		} // else {
+//			// wantToRestart();
+//	}
 	// } else if (KeyEvent.VK_ENTER == c) {
 	// gp.revealFullPhrase();
 	// } else if (KeyEvent.VK_SPACE == c) {
