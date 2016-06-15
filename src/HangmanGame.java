@@ -32,69 +32,47 @@ public class HangmanGame extends JFrame {
 		t.hideUnderline();
 		t.setPreferredSize(new Dimension(650, 50));
 
-		super.getContentPane().setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
+		super.getContentPane().setLayout(
+				new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
 
 		super.getContentPane().add(p);
 		super.getContentPane().add(ap);
-		// super.getContentPane().add(rs);
 		super.getContentPane().add(gp);
 		super.getContentPane().add(t);
 		super.pack();
 		super.setVisible(true);
-		
+
 		this.setFocusable(true); // enables frame to listen to key events
 		this.addKeyListener(new KeyAdapter() {
 			public void keyTyped(KeyEvent e) {
-					char c = e.getKeyChar();
-					c = Character.toUpperCase(c);
+				char c = e.getKeyChar();
+				c = Character.toUpperCase(c);
+				//if (p.getNumLeft() > 0) {
 					if (c >= 'A' && c <= 'Z') {
 						if (gp.hasLetter(c) == true) {
 							gp.revealLetter(c);
-							// ap.setLetterColor(Color.GREEN);
+							ap.setLetterColor(c, Color.GREEN);
 							if (gp.isFullPhraseRevealed()) {
 								wantToRestart();
 							}
 						} else if (p.getNumLeft() > 0) {
-							// if (!ap.hadLetterBeenSeen(c)) {
+							// if (ap.hasLetterBeenSeen(c)) {
 							p.showNext();
-							// ap.setLetterColor(Color.RED);
+							ap.setLetterColor(c, Color.RED);
 							if (p.getNumLeft() == 0) {
 								wantToRestart();
 							}
 						}
-					} // else {
-						// wantToRestart();
+					}
+				//} else if (KeyEvent.VK_ENTER == c) {
+					// gp.revealFullPhrase();
+					// } else if (KeyEvent.VK_SPACE == c) {
+					// reset();
+					// }
 				System.out.println("Key Listener");
 			}
 		});
 	}
-
-//	public void processLetter(char c) {
-//		c = Character.toUpperCase(c);
-//		if (c >= 'A' && c <= 'Z') {
-//			if (gp.hasLetter(c) == true) {
-//				gp.revealLetter(c);
-//				// ap.setLetterColor(Color.GREEN);
-//				if (gp.isFullPhraseRevealed()) {
-//					wantToRestart();
-//				}
-//			} else if (p.getNumLeft() > 0) {
-//				// if (!ap.hadLetterBeenSeen(c)) {
-//				p.showNext();
-//				// ap.setLetterColor(Color.RED);
-//				if (p.getNumLeft() == 0) {
-//					wantToRestart();
-//				}
-//			}
-//		} // else {
-//			// wantToRestart();
-//	}
-	// } else if (KeyEvent.VK_ENTER == c) {
-	// gp.revealFullPhrase();
-	// } else if (KeyEvent.VK_SPACE == c) {
-	// reset();
-	// }
-	// }
 
 	private void wantToRestart() {
 
@@ -105,15 +83,15 @@ public class HangmanGame extends JFrame {
 	 * letters in the current secret word. That would mean the user has won the
 	 * game.
 	 */
-//	private boolean wordIsComplete() {
-//		for (int i = 0; i < word.length(); i++) {
-//			char c = word.charAt(i);
-//			if (setPhrase.indexOf(c) == -1) {
-//				return false;
-//			}
-//		}
-//		return true;
-//	}
+	// private boolean wordIsComplete() {
+	// for (int i = 0; i < word.length(); i++) {
+	// char c = word.charAt(i);
+	// if (setPhrase.indexOf(c) == -1) {
+	// return false;
+	// }
+	// }
+	// return true;
+	// }
 
 	public void reset() {
 		p.reset();
