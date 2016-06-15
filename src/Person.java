@@ -12,14 +12,6 @@ public class Person extends JPanel {
 
 	private int numleft=6;
 
-//	public Person(){
-//		this.addMouseListener(new MouseAdapter() {
-//			public void mouseClicked(MouseEvent e) {
-//				showNext();
-//			}
-//		});
-//	}
-
 	public void paintComponent(Graphics page) {
 		int x = 300;
 		int y = 100;
