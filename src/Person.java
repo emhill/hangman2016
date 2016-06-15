@@ -22,39 +22,39 @@ public class Person extends JPanel {
 
 	public void paintComponent(Graphics page) {
 
-		int x = 400;
-		int y = 150;
+		int x = 300;
+		int y = 100;
 
 		super.paintComponent(page);
 
 		if (numleft <=5){
 			page.setColor(Color.BLUE);
-			page.fillOval(x, y, 180, 180);
+			page.fillOval(x, y, 50, 50);
 		}
 
 		if (numleft <= 4){
 			page.setColor(Color.yellow);
-			page.fillRect(x, y+180, 190, 250);
+			page.fillRect(x, y+50, 50, 75);
 		}
 
 		if (numleft <= 3){
 			page.setColor(Color.green);
-			page.fillRect(x-200, y+185, 200, 90);
+			page.fillRect(x-70, y+50, 70, 20);
 		}
 
 		if (numleft <= 2){
 			page.setColor(Color.red);
-			page.fillRect(x+190, y+185, 200, 90);
+			page.fillRect(x+50, y+50, 70, 20);
 		}
 
 		if (numleft <= 1){
 			page.setColor(Color.cyan);
-			page.fillRect(x, y+430, 85, 250);
+			page.fillRect(x-0, y+125, 20, 150);
 		}
 
 		if (numleft <= 0){
 			page.setColor(Color.magenta);
-			page.fillRect(x+105, y+430, 85, 250);
+			page.fillRect(x+29, y+125, 20, 150);
 		}
 	}
 
