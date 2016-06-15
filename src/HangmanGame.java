@@ -11,16 +11,28 @@ import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+/**
+ * A GUI version of the Hangman Game. The user tries to guess letter in a
+ * secret word and loses it after 7 guesses that are not in the word. The user
+ * guesses a letter by clicking a button whose text is that letter.
+ */
+
 public class HangmanGame extends JFrame {
 	// fields for Person, AlphabetPanel, etc
-	private Person p;
-	private AlphabetPanel ap;
-	private RandomString rs;
-	private GuessPhrasePanel gp;
-	private Text t;
-	private Text win;
-	private Text lose;
+	private Person p; // the central panel of the GUI, where things are drawn.
+	private AlphabetPanel ap; // An Object holding the list of possible words that can be used in the game.
+	private RandomString rs; 
+	private GuessPhrasePanel gp; // A String containing all the letters that the user has guessed so far.
+	private Text t;    
+	private Text win;  // If the user WIN the game "Spelled all the correct letters"
+	private Text lose; // If the user LOSE the game "if number of wrong letters exceeds the limit"
 
+	/**
+	 * This constructor that creates the main panel, which is represented 
+	 * by this class. It makes all the JOption, Box layout and sub panels and adds
+	 * them to the main panel.
+	 */
+	
 	public HangmanGame() {
 		super("Hangman Game");
 		super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -70,6 +82,11 @@ public class HangmanGame extends JFrame {
 		});
 	}
 	
+	/**
+	 * This method will reset the alphabetical order back its state
+	 * It picks a new secret word, initialize all the variables that record the state of the game.
+	 */
+	
 	public void reset() {
 		p.reset();
 		gp.setPhrase(rs.next());
@@ -77,7 +94,10 @@ public class HangmanGame extends JFrame {
 		win.hideText();
 		lose.hideText();
 	}
-	
+	/**
+	 *JOPtionpane to prompt user Confirmation.
+	 *This method should be called any time a game ends i.e. "win or lose"
+	 */
 	public void playAgain() {
 		int response = JOptionPane.showConfirmDialog(null,
 				"Do you want to play again?", "Confirm",
