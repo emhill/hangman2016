@@ -120,10 +120,9 @@ public class HangmanGame extends JFrame {
 			playAgain();
 		} else if (KeyEvent.VK_SPACE == c) {
 			reset();
-		} else if (KeyEvent.VK_OPEN_BRACKET == c) {
-			playAgain();
-		}
+		} 
 	}
+	
 	/**
 	 * This main program make it possible to run this class as an application.
 	 * The main routine creates a frame,sets it to contain panel of type
