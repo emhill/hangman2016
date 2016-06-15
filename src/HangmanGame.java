@@ -113,6 +113,8 @@ public class HangmanGame extends JFrame {
 		}
 	}
 	
+	//This method makes the game work properly
+	//Processes the letter that is pressed and goes through method
 	private void processLetter(char c) {
 		c = Character.toUpperCase(c);
 		if (c >= 'A' && c <= 'Z') {
