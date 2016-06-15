@@ -23,15 +23,17 @@ public class HangmanGame extends JFrame {
 		super("Hangman Game");
 		super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+		//frame.setLayout(new BoxLayout(frame, BoxLayout.PAGE_AXIS));
+		
 		Person p = new Person();
 		AlphabetPanel ap = new AlphabetPanel();
 		RandomString rs = new RandomString("");
-		GuessPhrasePanel gp = new GuessPhrasePanel("reveals FullPhrase!");
+		GuessPhrasePanel gp = new GuessPhrasePanel(rs.next());
 		gp.setPreferredSize(new Dimension(640, 500));
 
-		Text t = new Text("Hello, world!");
-		t.hideUnderline();
-		t.setPreferredSize(new Dimension(650, 50));
+		 Text t = new Text("Reveal Full Phrase: Enter / New Game: SpaceBar");
+		 t.hideUnderline();
+		 t.setPreferredSize(new Dimension(650, 50));
 
 		super.getContentPane().setLayout(
 				new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
@@ -48,32 +50,38 @@ public class HangmanGame extends JFrame {
 			public void keyTyped(KeyEvent e) {
 				char c = e.getKeyChar();
 				c = Character.toUpperCase(c);
-				if (p.getNumLeft() > 0) {
-					if (c >= 'A' && c <= 'Z') {
-						if (gp.hasLetter(c) == true) {
-							gp.revealLetter(c);
-							ap.setLetterColor(c, Color.GREEN);
-							if (gp.isFullPhraseRevealed()) {
-								wantTorestart();
-							}
-						} else if (p.getNumLeft() > 0) {
-//							if (ap.hasLetterBeenSeen(c)) {
-							p.showNext();
-							ap.setLetterColor(c, Color.RED);
-							if (p.getNumLeft() == 0) {
-								wantTorestart();
-							}
+				if (c >= 'A' && c <= 'Z') {
+					if (gp.hasLetter(c) == true) {
+						gp.revealLetter(c);
+						ap.setLetterColor(c, Color.GREEN);
+						if (gp.isFullPhraseRevealed()) {
+							Text t = new Text("Full Phrase Revealed!");
+							t.hideUnderline();
+							t.setPreferredSize(new Dimension(650, 50));
+						} else if (p.getNumLeft() <= 0) {
+							Text t = new Text("You lose!");
+							t.hideUnderline();
+							t.setPreferredSize(new Dimension(650, 50));
 						}
+					} else if (p.getNumLeft() > 0) {
+						// if (!ap.hasLetterBeenSeen(c)) {
+						p.showNext();
+						ap.setLetterColor(c, Color.RED);
+						if (p.getNumLeft() == 0) {
+							wantToRestart();
+						}
+					}
 				} else if (KeyEvent.VK_ENTER == c) {
-					 gp.revealFullPhrase();
-					 } else if (KeyEvent.VK_SPACE == c) {
-					 reset();
-					 }
+					gp.revealFullPhrase();
+				} else if (KeyEvent.VK_SPACE == c) {
+					p.reset();
+					gp.setPhrase(rs.next());
+					ap.reset();
+				}
 				System.out.println("Key Listener");
 			}
 		});
 	}
-			
 	public void reset() {
 		p.reset();
 		gp.setPhrase(rs.next());
@@ -81,7 +89,7 @@ public class HangmanGame extends JFrame {
 	}
 	
 	
-	public void wantTorestart(){
+	public void wantToRestart(){
 		int response = JOptionPane.showConfirmDialog(null, "Do you want to restart the game?", "Confirm",
 				JOptionPane.YES_NO_OPTION,
 				JOptionPane.QUESTION_MESSAGE);
@@ -106,8 +114,12 @@ public class HangmanGame extends JFrame {
 												// title bar.
 		HangmanGame frame1 = new HangmanGame();// the main frame for the window.
 		frame.getContentPane();
-		frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // End of the program if the user closes the frame.
-		System.out.println("Click Yes to Restart");
+		frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // End of the
+																// program if
+																// the user
+																// closes the
+																// frame.
+		// System.out.println("Click Yes to Restart");
 
 		frame1.pack(); // Sets the size of the frame based on the preferred sizes of what it contains.
 		frame1.setVisible(true); // Make the frame visible on the screen.

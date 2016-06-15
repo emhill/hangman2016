@@ -31,9 +31,10 @@ gets rid of old phrase parts and creates new ones
 		for (char ch: guessPhrase.toCharArray()){
 			Text t = new Text(Character.toString(ch));
 			t.setUnderlineColor(Color.black);
-			if (ch == ' '  ){
+			if (ch == ' ' || ch == '!' || ch=='?' || ch=='.'  ){
 				t.hideUnderline();
 			}
+			
 			else{
 				t.showUnderline();
 				t.hideText();
@@ -80,13 +81,13 @@ gets rid of old phrase parts and creates new ones
 
 	public static void main(String[] args) {
 		JFrame frame = new JFrame ();
-		GuessPhrasePanel phrase = new GuessPhrasePanel("Random String");
+		GuessPhrasePanel phrase = new GuessPhrasePanel("Random String!");
 		//		phrase.revealLetter('a');
 		System.out.println(phrase.hasLetter('A'));
 		System.out.println(phrase.hasLetter('z'));
 		phrase.revealLetter('A');
 		System.out.println(phrase.isFullPhraseRevealed());
-		phrase.revealFullPhrase();
+//		phrase.revealFullPhrase();
 		JPanel panel = phrase;
 
 		frame.getContentPane().add(panel);
