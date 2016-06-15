@@ -26,6 +26,7 @@ public class HangmanGame extends JFrame {
 		//frame.setLayout(new BoxLayout(frame, BoxLayout.PAGE_AXIS));
 		
 		Person p = new Person();
+		p.setPreferredSize(new Dimension(650, 500));
 		AlphabetPanel ap = new AlphabetPanel();
 		RandomString rs = new RandomString("");
 		GuessPhrasePanel gp = new GuessPhrasePanel(rs.next());
@@ -38,8 +39,8 @@ public class HangmanGame extends JFrame {
 		super.getContentPane().setLayout(
 				new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
 
-		super.getContentPane().add(p);
 		super.getContentPane().add(ap);
+		super.getContentPane().add(p);
 		super.getContentPane().add(gp);
 		super.getContentPane().add(t);
 		super.pack();
