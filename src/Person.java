@@ -21,11 +21,12 @@ public class Person extends JPanel {
 //	}
 
 	public void paintComponent(Graphics page) {
-
 		int x = 300;
 		int y = 100;
-
+	
 		super.paintComponent(page);
+		
+	
 
 		if (numleft <=5){
 			page.setColor(Color.BLUE);
@@ -64,6 +65,7 @@ public class Person extends JPanel {
 
 	public void reset(){
 		numleft = 6;
+		repaint();
 	}
 
 	public void showNext(){

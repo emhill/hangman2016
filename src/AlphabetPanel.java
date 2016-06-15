@@ -8,14 +8,9 @@ import java.util.*;
 public class AlphabetPanel extends JPanel {
 	
 
-	public boolean beenSeen;
-	public boolean vowel;
-	public Color LetterColor;
+
+
 	private ArrayList<Text> list;
-	public String Letters, letter, letter1;
-	public int num, x, i;
-	public char c;
-	public Color color;
 	
 
 	
@@ -23,24 +18,24 @@ public class AlphabetPanel extends JPanel {
 		
 	public AlphabetPanel(){
 		list = new ArrayList<Text>();
-		for( c = 'A'; c <= 'Z'; c++){           //Create a character c that will loop from  "A" to "Z" 
+		for( char c = 'A'; c <= 'Z'; c++){           //Create a character c that will loop from  "A" to "Z" 
 			
-			letter = Character.toString(c);     //Create a string letter that is equal to  "A" to "Z" 
-			Text c = new Text(letter); 			//Create a text object c(A to Z) that has a label letter(A to Z)
-			c.setLetterColor(Color.black);		//Set the object letter color
-			c.showText();						//Make the object visable
-			c.hideUnderline();					//Remove any underlines from the object
+			String letter = Character.toString(c);     //Create a string letter that is equal to  "A" to "Z" 
+			Text ch = new Text(letter); 			//Create a text object c(A to Z) that has a label letter(A to Z)
+			ch.setLetterColor(Color.black);		//Set the object letter color
+			ch.showText();						//Make the object visable
+			ch.hideUnderline();					//Remove any underlines from the object
 			
-			list.add(c);						//add the object to the arraylist 
+			list.add(ch);						//add the object to the arraylist 
 						
-			this.add(c);						//add the object to the Alphabet panel
+			this.add(ch);						//add the object to the Alphabet panel
 		}
 		
 	}
 
 			
 		public void reset(){
-			for(int i = 0; 1 < 26; i++){
+			for(int i = 0; i < 26; i++){
 				list.get(i).setLetterColor(Color.BLACK);		//get the object (i) from the arraylist and set its letter color 
 			}}
 		
@@ -60,8 +55,8 @@ public class AlphabetPanel extends JPanel {
 		}
 		
 		public boolean hasLetterBeenSeen(char c){ //Color color
-			beenSeen = false;
-			if(getLetterColor(c).equals (Color.MAGENTA)){
+			boolean beenSeen = false;
+			if(!getLetterColor(c).equals (Color.BLACK)){
 				beenSeen = true;
 		}
 			return beenSeen;
@@ -70,11 +65,11 @@ public class AlphabetPanel extends JPanel {
 			
 		public boolean isVowel(char c){
 				if (c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U') {
-					System.out.println("Is a vowel");
+					//System.out.println("Is a vowel");
 					return true;
 				}
 				else {
-					System.out.println("Not a vowel");
+					//System.out.println("Not a vowel");
 					return false;
 				}
 				
