@@ -9,6 +9,7 @@ import java.awt.event.KeyAdapter;
 
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class HangmanGame extends JFrame {
 	// fields for Person, AlphabetPanel, etc
@@ -81,17 +82,27 @@ public class HangmanGame extends JFrame {
 			}
 		});
 	}
-
-	private void wantToRestart() {
-
-	}
-
 	public void reset() {
 		p.reset();
 		gp.setPhrase(rs.next());
 		ap.reset();
 	}
-
+	
+	
+	public void wantToRestart(){
+		int response = JOptionPane.showConfirmDialog(null, "Do you want to restart the game?", "Confirm",
+				JOptionPane.YES_NO_OPTION,
+				JOptionPane.QUESTION_MESSAGE);
+		if(response == JOptionPane.NO_OPTION){
+		System.out.println("No button clicked");
+		System.exit(0);
+		}else if(response == JOptionPane.YES_OPTION){
+		System.out.println("Yes button clicked");
+		this.reset();
+		}else if(response == JOptionPane.CLOSED_OPTION){
+			System.out.println("JOption closed");
+		}
+	}
 	/**
 	 * This main program make it possible to run this class as an application.
 	 * The main routine creates a frame,sets it to contain panel of type
@@ -110,8 +121,7 @@ public class HangmanGame extends JFrame {
 																// frame.
 		// System.out.println("Click Yes to Restart");
 
-		frame1.pack(); // Sets the size of the frame based on the preferred
-						// sizes of what it contains.
+		frame1.pack(); // Sets the size of the frame based on the preferred sizes of what it contains.
 		frame1.setVisible(true); // Make the frame visible on the screen.
 	}
 
