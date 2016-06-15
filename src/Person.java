@@ -18,7 +18,18 @@ public class Person extends JPanel {
 	
 		super.paintComponent(page);
 		
-	
+		//Next 4 rectangles set hanging platform
+		page.setColor(Color.BLACK);
+		page.fillRect(x-120, y-40, 10, 325);
+		
+		page.setColor(Color.BLACK);
+		page.fillRect(x-120, y-40, 150, 10);
+		
+		page.setColor(Color.BLACK);
+		page.fillRect(x+20, y-40, 10, 50);
+		
+		page.setColor(Color.BLACK);
+		page.fillRect(x-165, y+275, 100, 10);
 
 		if (numleft <=5){
 			page.setColor(Color.BLUE);
@@ -42,12 +53,12 @@ public class Person extends JPanel {
 
 		if (numleft <= 1){
 			page.setColor(Color.cyan);
-			page.fillRect(x-0, y+125, 20, 150);
+			page.fillRect(x-0, y+125, 20, 125);
 		}
 
 		if (numleft <= 0){
 			page.setColor(Color.magenta);
-			page.fillRect(x+29, y+125, 20, 150);
+			page.fillRect(x+29, y+125, 20, 125);
 		}
 	}
 
@@ -71,7 +82,7 @@ public class Person extends JPanel {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		JPanel panel = new Person();
-		panel.setPreferredSize(new Dimension(1000,1000));
+		panel.setPreferredSize(new Dimension(650,1000));
 
 		frame.getContentPane().add(panel);
 		frame.pack();
