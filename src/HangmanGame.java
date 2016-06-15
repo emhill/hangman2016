@@ -9,6 +9,7 @@ import java.awt.event.KeyAdapter;
 
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class HangmanGame extends JFrame {
 	// fields for Person, AlphabetPanel, etc
@@ -47,58 +48,53 @@ public class HangmanGame extends JFrame {
 			public void keyTyped(KeyEvent e) {
 				char c = e.getKeyChar();
 				c = Character.toUpperCase(c);
-				//if (p.getNumLeft() > 0) {
+				if (p.getNumLeft() > 0) {
 					if (c >= 'A' && c <= 'Z') {
 						if (gp.hasLetter(c) == true) {
 							gp.revealLetter(c);
 							ap.setLetterColor(c, Color.GREEN);
 							if (gp.isFullPhraseRevealed()) {
-								wantToRestart();
+								wantTorestart();
 							}
 						} else if (p.getNumLeft() > 0) {
-							// if (ap.hasLetterBeenSeen(c)) {
+//							if (ap.hasLetterBeenSeen(c)) {
 							p.showNext();
 							ap.setLetterColor(c, Color.RED);
 							if (p.getNumLeft() == 0) {
-								wantToRestart();
+								wantTorestart();
 							}
 						}
-					}
-				//} else if (KeyEvent.VK_ENTER == c) {
-					// gp.revealFullPhrase();
-					// } else if (KeyEvent.VK_SPACE == c) {
-					// reset();
-					// }
+				} else if (KeyEvent.VK_ENTER == c) {
+					 gp.revealFullPhrase();
+					 } else if (KeyEvent.VK_SPACE == c) {
+					 reset();
+					 }
 				System.out.println("Key Listener");
 			}
 		});
 	}
-
-	private void wantToRestart() {
-
-	}
-
-	/**
-	 * This method can be called to test whether the user has guessed all the
-	 * letters in the current secret word. That would mean the user has won the
-	 * game.
-	 */
-	// private boolean wordIsComplete() {
-	// for (int i = 0; i < word.length(); i++) {
-	// char c = word.charAt(i);
-	// if (setPhrase.indexOf(c) == -1) {
-	// return false;
-	// }
-	// }
-	// return true;
-	// }
-
+			
 	public void reset() {
 		p.reset();
 		gp.setPhrase(rs.next());
 		ap.reset();
 	}
-
+	
+	
+	public void wantTorestart(){
+		int response = JOptionPane.showConfirmDialog(null, "Do you want to restart the game?", "Confirm",
+				JOptionPane.YES_NO_OPTION,
+				JOptionPane.QUESTION_MESSAGE);
+		if(response == JOptionPane.NO_OPTION){
+		System.out.println("No button clicked");
+		System.exit(0);
+		}else if(response == JOptionPane.YES_OPTION){
+		System.out.println("Yes button clicked");
+		this.reset();
+		}else if(response == JOptionPane.CLOSED_OPTION){
+			System.out.println("JOption closed");
+		}
+	}
 	/**
 	 * This main program make it possible to run this class as an application.
 	 * The main routine creates a frame,sets it to contain panel of type
@@ -110,15 +106,10 @@ public class HangmanGame extends JFrame {
 												// title bar.
 		HangmanGame frame1 = new HangmanGame();// the main frame for the window.
 		frame.getContentPane();
-		frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // End of the
-																// program if
-																// the user
-																// closes the
-																// frame.
+		frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // End of the program if the user closes the frame.
 		System.out.println("Click Yes to Restart");
 
-		frame1.pack(); // Sets the size of the frame based on the preferred
-						// sizes of what it contains.
+		frame1.pack(); // Sets the size of the frame based on the preferred sizes of what it contains.
 		frame1.setVisible(true); // Make the frame visible on the screen.
 	}
 
