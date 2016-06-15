@@ -97,9 +97,18 @@ public class AlphabetPanel extends JPanel {
 			return beenSeen;
 		}
 			
-		public boolean isVowel(){
-			
-			return vowel;
+		public boolean isVowel(char c){
+				if (c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U') {
+					System.out.println("Is a vowel");
+					return true;
+				}
+				else {
+					System.out.println("Not a vowel");
+					return false;
+				}
+				
+			}
+
 			
 		}
 
