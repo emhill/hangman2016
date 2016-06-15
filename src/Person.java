@@ -12,13 +12,13 @@ public class Person extends JPanel {
 
 	private int numleft=6;
 
-	public Person(){
-		this.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent e) {
-				showNext();
-			}
-		});
-	}
+//	public Person(){
+//		this.addMouseListener(new MouseAdapter() {
+//			public void mouseClicked(MouseEvent e) {
+//				showNext();
+//			}
+//		});
+//	}
 
 	public void paintComponent(Graphics page) {
 
@@ -68,6 +68,7 @@ public class Person extends JPanel {
 
 	public void showNext(){
 		numleft -= 1;
+		repaint();
 	}
 
 	public static void main(String[] args) {

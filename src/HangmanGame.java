@@ -26,10 +26,11 @@ public class HangmanGame extends JFrame {
 		//frame.setLayout(new BoxLayout(frame, BoxLayout.PAGE_AXIS));
 		
 		Person p = new Person();
+		p.setPreferredSize(new Dimension(650, 500));
 		AlphabetPanel ap = new AlphabetPanel();
 		RandomString rs = new RandomString("");
 		GuessPhrasePanel gp = new GuessPhrasePanel(rs.next());
-		gp.setPreferredSize(new Dimension(640, 500));
+		gp.setPreferredSize(new Dimension(640, 100));
 
 		 Text t = new Text("Reveal Full Phrase: Enter / New Game: SpaceBar");
 		 t.hideUnderline();
@@ -38,8 +39,8 @@ public class HangmanGame extends JFrame {
 		super.getContentPane().setLayout(
 				new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
 
-		super.getContentPane().add(p);
 		super.getContentPane().add(ap);
+		super.getContentPane().add(p);
 		super.getContentPane().add(gp);
 		super.getContentPane().add(t);
 		super.pack();
@@ -64,11 +65,12 @@ public class HangmanGame extends JFrame {
 							t.setPreferredSize(new Dimension(650, 50));
 						}
 					} else if (p.getNumLeft() > 0) {
-						// if (!ap.hasLetterBeenSeen(c)) {
+						if (!ap.hasLetterBeenSeen(c)) {
 						p.showNext();
 						ap.setLetterColor(c, Color.RED);
-						if (p.getNumLeft() == 0) {
-							wantToRestart();
+							if (p.getNumLeft() == 0) {
+								wantToRestart();
+							}
 						}
 					}
 				} else if (KeyEvent.VK_ENTER == c) {
@@ -77,6 +79,8 @@ public class HangmanGame extends JFrame {
 					p.reset();
 					gp.setPhrase(rs.next());
 					ap.reset();
+				} else if (KeyEvent.VK_OPEN_BRACKET == c) {
+					wantToRestart();
 				}
 				System.out.println("Key Listener");
 			}
@@ -89,17 +93,18 @@ public class HangmanGame extends JFrame {
 	}
 	
 	
-	public void wantToRestart(){
-		int response = JOptionPane.showConfirmDialog(null, "Do you want to restart the game?", "Confirm",
-				JOptionPane.YES_NO_OPTION,
-				JOptionPane.QUESTION_MESSAGE);
-		if(response == JOptionPane.NO_OPTION){
-		System.out.println("No button clicked");
-		System.exit(0);
-		}else if(response == JOptionPane.YES_OPTION){
-		System.out.println("Yes button clicked");
-		this.reset();
-		}else if(response == JOptionPane.CLOSED_OPTION){
+	public void wantToRestart() {
+		int response = JOptionPane.showConfirmDialog(null,
+				"Do you want to restart the game?", "Confirm",
+				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+		if (response == JOptionPane.NO_OPTION) {
+			System.out.println("No button clicked");
+			System.exit(0);
+		} else if (response == JOptionPane.YES_OPTION) {
+			System.out.println("Yes button clicked");
+			p.reset();
+			ap.reset();
+		} else if (response == JOptionPane.CLOSED_OPTION) {
 			System.out.println("JOption closed");
 		}
 	}
@@ -110,19 +115,6 @@ public class HangmanGame extends JFrame {
 	 **/
 	public static void main(String[] args) {
 		new HangmanGame();
-		JFrame frame = new JFrame("Hangman");// The frame, with "Hangman" in the
-												// title bar.
-		HangmanGame frame1 = new HangmanGame();// the main frame for the window.
-		frame.getContentPane();
-		frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // End of the
-																// program if
-																// the user
-																// closes the
-																// frame.
-		// System.out.println("Click Yes to Restart");
-
-		frame1.pack(); // Sets the size of the frame based on the preferred sizes of what it contains.
-		frame1.setVisible(true); // Make the frame visible on the screen.
 	}
 
 }
