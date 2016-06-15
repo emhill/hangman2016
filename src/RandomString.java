@@ -17,7 +17,7 @@ public class RandomString {
 
 		Scanner s;
 		try {
-			s = new Scanner( new File("guess_phrases.txt"));
+			s = new Scanner( new File(filename));
 			while (s.hasNext()){
 				String line = s.nextLine(); // get input
 				lines.add(line);            // add line to array list

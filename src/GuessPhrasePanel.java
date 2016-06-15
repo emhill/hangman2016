@@ -20,6 +20,7 @@ public class GuessPhrasePanel extends JPanel {
 		this.removeAll();
 		this.updateUI();
 		this.revalidate();
+		list=new ArrayList();
 	}
 
 	/*sets a new phrase to this GuessPhrase object,

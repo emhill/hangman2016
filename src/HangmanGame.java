@@ -17,7 +17,6 @@ public class HangmanGame extends JFrame {
 	private AlphabetPanel ap;
 	private RandomString rs;
 	private GuessPhrasePanel gp;
-	private String word;
 
 	public HangmanGame() {
 		super("Hangman Game");
@@ -25,16 +24,26 @@ public class HangmanGame extends JFrame {
 
 		//frame.setLayout(new BoxLayout(frame, BoxLayout.PAGE_AXIS));
 		
-		Person p = new Person();
+		p = new Person();
 		p.setPreferredSize(new Dimension(650, 500));
-		AlphabetPanel ap = new AlphabetPanel();
-		RandomString rs = new RandomString("");
-		GuessPhrasePanel gp = new GuessPhrasePanel(rs.next());
+		ap = new AlphabetPanel();
+		rs = new RandomString("guess_phrases.txt");
+		gp = new GuessPhrasePanel(rs.next());
 		gp.setPreferredSize(new Dimension(640, 100));
-
-		 Text t = new Text("Reveal Full Phrase: Enter / New Game: SpaceBar");
-		 t.hideUnderline();
-		 t.setPreferredSize(new Dimension(650, 50));
+		
+		Text t = new Text("Reveal Full Phrase: Enter / New Game: SpaceBar");
+		t.hideUnderline();
+		t.setPreferredSize(new Dimension(650, 50));
+		
+		Text win = new Text("Full Phrase Revealed!");
+		win.hideUnderline();
+		win.setPreferredSize(new Dimension(650, 50));
+		win.hideText();
+		
+		Text lose = new Text("You lose!");
+		lose.hideUnderline();
+		lose.setPreferredSize(new Dimension(650, 50));
+		lose.hideText();
 
 		super.getContentPane().setLayout(
 				new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
@@ -42,6 +51,8 @@ public class HangmanGame extends JFrame {
 		super.getContentPane().add(ap);
 		super.getContentPane().add(p);
 		super.getContentPane().add(gp);
+		super.getContentPane().add(win);
+		super.getContentPane().add(lose);
 		super.getContentPane().add(t);
 		super.pack();
 		super.setVisible(true);
@@ -55,32 +66,26 @@ public class HangmanGame extends JFrame {
 					if (gp.hasLetter(c) == true) {
 						gp.revealLetter(c);
 						ap.setLetterColor(c, Color.GREEN);
-						if (gp.isFullPhraseRevealed()) {
-							Text t = new Text("Full Phrase Revealed!");
-							t.hideUnderline();
-							t.setPreferredSize(new Dimension(650, 50));
+						if (gp.isFullPhraseRevealed() == true) {
+							win.showText();
 						} else if (p.getNumLeft() <= 0) {
-							Text t = new Text("You lose!");
-							t.hideUnderline();
-							t.setPreferredSize(new Dimension(650, 50));
+							lose.showText();
 						}
 					} else if (p.getNumLeft() > 0) {
 						if (!ap.hasLetterBeenSeen(c)) {
 						p.showNext();
 						ap.setLetterColor(c, Color.RED);
 							if (p.getNumLeft() == 0) {
-								wantToRestart();
+								playAgain();
 							}
 						}
 					}
 				} else if (KeyEvent.VK_ENTER == c) {
 					gp.revealFullPhrase();
 				} else if (KeyEvent.VK_SPACE == c) {
-					p.reset();
-					gp.setPhrase(rs.next());
-					ap.reset();
+					reset();
 				} else if (KeyEvent.VK_OPEN_BRACKET == c) {
-					wantToRestart();
+					playAgain();
 				}
 				System.out.println("Key Listener");
 			}
@@ -93,17 +98,16 @@ public class HangmanGame extends JFrame {
 	}
 	
 	
-	public void wantToRestart() {
+	public void playAgain() {
 		int response = JOptionPane.showConfirmDialog(null,
-				"Do you want to restart the game?", "Confirm",
+				"Do you want to play again?", "Confirm",
 				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 		if (response == JOptionPane.NO_OPTION) {
 			System.out.println("No button clicked");
 			System.exit(0);
 		} else if (response == JOptionPane.YES_OPTION) {
 			System.out.println("Yes button clicked");
-			p.reset();
-			ap.reset();
+			this.reset();
 		} else if (response == JOptionPane.CLOSED_OPTION) {
 			System.out.println("JOption closed");
 		}
