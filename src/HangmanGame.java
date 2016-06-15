@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 
 /**
  * A GUI version of the Hangman Game. The user tries to guess letter in a
- * secret word and loses it after 7 guesses that are not in the word. The user
+ * secret word and loses it after 6 guesses that are not in the word. The user
  * guesses a letter by clicking a button whose text is that letter.
  */
 
