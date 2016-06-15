@@ -117,6 +117,7 @@ public class HangmanGame extends JFrame {
 			}
 		} else if (KeyEvent.VK_ENTER == c) {
 			gp.revealFullPhrase();
+			playAgain();
 		} else if (KeyEvent.VK_SPACE == c) {
 			reset();
 		} else if (KeyEvent.VK_OPEN_BRACKET == c) {
