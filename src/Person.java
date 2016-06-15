@@ -22,8 +22,8 @@ public class Person extends JPanel {
 
 	public void paintComponent(Graphics page) {
 
-		int x = 1190;
-		int y = 0;
+		int x = 100;
+		int y = 150;
 
 		super.paintComponent(page);
 
@@ -64,6 +64,7 @@ public class Person extends JPanel {
 
 	public void reset(){
 		numleft = 6;
+		repaint();
 	}
 
 	public void showNext(){
