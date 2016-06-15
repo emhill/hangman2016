@@ -64,38 +64,12 @@ public class HangmanGame extends JFrame {
 		this.addKeyListener(new KeyAdapter() {
 			public void keyTyped(KeyEvent e) {
 				char c = e.getKeyChar();
-				c = Character.toUpperCase(c);
-				if (c >= 'A' && c <= 'Z') {
-					if (gp.hasLetter(c) == true) {
-						gp.revealLetter(c);
-						ap.setLetterColor(c, Color.GREEN);
-						if (gp.isFullPhraseRevealed() == true) {
-							win.showText();
-							playAgain();
-						} else if (p.getNumLeft() <= 0) {
-							
-						}
-					} else if (p.getNumLeft() > 0) {
-						if (!ap.hasLetterBeenSeen(c)) {
-						p.showNext();
-						ap.setLetterColor(c, Color.RED);
-							if (p.getNumLeft() == 0) {
-								lose.showText();
-								playAgain();
-							}
-						}
-					}
-				} else if (KeyEvent.VK_ENTER == c) {
-					gp.revealFullPhrase();
-				} else if (KeyEvent.VK_SPACE == c) {
-					reset();
-				} else if (KeyEvent.VK_OPEN_BRACKET == c) {
-					playAgain();
-				}
+				processLetter(c);
 				System.out.println("Key Listener");
 			}
 		});
 	}
+	
 	public void reset() {
 		p.reset();
 		gp.setPhrase(rs.next());
@@ -103,7 +77,6 @@ public class HangmanGame extends JFrame {
 		win.hideText();
 		lose.hideText();
 	}
-	
 	
 	public void playAgain() {
 		int response = JOptionPane.showConfirmDialog(null,
@@ -117,6 +90,37 @@ public class HangmanGame extends JFrame {
 			this.reset();
 		} else if (response == JOptionPane.CLOSED_OPTION) {
 			System.out.println("JOption closed");
+		}
+	}
+	
+	private void processLetter(char c) {
+		c = Character.toUpperCase(c);
+		if (c >= 'A' && c <= 'Z') {
+			if (gp.hasLetter(c) == true) {
+				gp.revealLetter(c);
+				ap.setLetterColor(c, Color.GREEN);
+				if (gp.isFullPhraseRevealed() == true) {
+					win.showText();
+					playAgain();
+				} else if (p.getNumLeft() <= 0) {
+					
+				}
+			} else if (p.getNumLeft() > 0) {
+				if (!ap.hasLetterBeenSeen(c)) {
+				p.showNext();
+				ap.setLetterColor(c, Color.RED);
+					if (p.getNumLeft() == 0) {
+						lose.showText();
+						playAgain();
+					}
+				}
+			}
+		} else if (KeyEvent.VK_ENTER == c) {
+			gp.revealFullPhrase();
+		} else if (KeyEvent.VK_SPACE == c) {
+			reset();
+		} else if (KeyEvent.VK_OPEN_BRACKET == c) {
+			playAgain();
 		}
 	}
 	/**
