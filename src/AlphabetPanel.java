@@ -40,7 +40,7 @@ public class AlphabetPanel extends JPanel {
 
 			
 		public void reset(){
-			for(int i = 0; 1 < 26; i++){
+			for(int i = 0; i < 26; i++){
 				list.get(i).setLetterColor(Color.BLACK);		//get the object (i) from the arraylist and set its letter color 
 			}}
 		
@@ -70,11 +70,11 @@ public class AlphabetPanel extends JPanel {
 			
 		public boolean isVowel(char c){
 				if (c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U') {
-					System.out.println("Is a vowel");
+					//System.out.println("Is a vowel");
 					return true;
 				}
 				else {
-					System.out.println("Not a vowel");
+					//System.out.println("Not a vowel");
 					return false;
 				}
 				
