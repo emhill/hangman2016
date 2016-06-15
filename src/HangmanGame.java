@@ -30,7 +30,7 @@ public class HangmanGame extends JFrame {
 		AlphabetPanel ap = new AlphabetPanel();
 		RandomString rs = new RandomString("");
 		GuessPhrasePanel gp = new GuessPhrasePanel(rs.next());
-		gp.setPreferredSize(new Dimension(640, 500));
+		gp.setPreferredSize(new Dimension(640, 100));
 
 		 Text t = new Text("Reveal Full Phrase: Enter / New Game: SpaceBar");
 		 t.hideUnderline();
@@ -65,11 +65,12 @@ public class HangmanGame extends JFrame {
 							t.setPreferredSize(new Dimension(650, 50));
 						}
 					} else if (p.getNumLeft() > 0) {
-						// if (!ap.hasLetterBeenSeen(c)) {
+						if (!ap.hasLetterBeenSeen(c)) {
 						p.showNext();
 						ap.setLetterColor(c, Color.RED);
-						if (p.getNumLeft() == 0) {
-							wantToRestart();
+							if (p.getNumLeft() == 0) {
+								wantToRestart();
+							}
 						}
 					}
 				} else if (KeyEvent.VK_ENTER == c) {
@@ -78,6 +79,8 @@ public class HangmanGame extends JFrame {
 					p.reset();
 					gp.setPhrase(rs.next());
 					ap.reset();
+				} else if (KeyEvent.VK_OPEN_BRACKET == c) {
+					wantToRestart();
 				}
 				System.out.println("Key Listener");
 			}
