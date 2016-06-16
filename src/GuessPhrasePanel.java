@@ -100,11 +100,3 @@ gets rid of old phrase parts and creates new ones
 
 }
 
-
-//public void revealLetter(char c){
-//	for (char ch: guessPhrase.toCharArray()){
-//	Text t = new Text(Character.toString(ch));
-//	if (ch == c){
-//		t.showText();
-//		t.hideUnderline();	
-//	}
