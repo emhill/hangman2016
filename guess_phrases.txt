@@ -13,3 +13,4 @@ PERSON
 GUESS PHRASE PANEL
 ALPHABET PANEL
 HANGMAN GAME
+The quick brown fox jumps over the lazy dog
