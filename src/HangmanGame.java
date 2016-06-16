@@ -124,8 +124,6 @@ public class HangmanGame extends JFrame {
 				if (gp.isFullPhraseRevealed() == true) {
 					win.showText();
 					playAgain();
-				} else if (p.getNumLeft() <= 0) {
-					
 				}
 			} else if (p.getNumLeft() > 0) {
 				if (!ap.hasLetterBeenSeen(c)) {
